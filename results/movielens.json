@@ -1,0 +1,40 @@
+{
+  "dataset_key": "movielens",
+  "dataset_name": "MovieLens-1M",
+  "model": "TiM4Rec",
+  "checkpoint": "saved\\movielens\\tim4rec_best.pth",
+  "last_evaluated_at": "2026-11-16T16:48:18+03:00",
+  "metrics": [
+    "Hit",
+    "NDCG",
+    "MRR"
+  ],
+  "topk": [
+    10,
+    20,
+    50
+  ],
+  "test_result": {
+    "hit@10": 0.2815,
+    "hit@20": 0.3929,
+    "hit@50": 0.5469,
+    "ndcg@10": 0.1538,
+    "ndcg@20": 0.182,
+    "ndcg@50": 0.2126,
+    "mrr@10": 0.1151,
+    "mrr@20": 0.1228,
+    "mrr@50": 0.1277
+  },
+  "best_validation_score": 0.1625,
+  "best_validation_result": {
+    "hit@10": 0.2927,
+    "hit@20": 0.4101,
+    "hit@50": 0.5747,
+    "ndcg@10": 0.1625,
+    "ndcg@20": 0.1921,
+    "ndcg@50": 0.2248,
+    "mrr@10": 0.123,
+    "mrr@20": 0.131,
+    "mrr@50": 0.1363
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "dataset_key": "steam",
+  "dataset_name": "Steam",
+  "model": "TiM4Rec",
+  "checkpoint": "saved\\steam\\tim4rec_best.pth",
+  "last_evaluated_at": "2026-11-16T19:22:28+03:00",
+  "metrics": [
+    "Hit",
+    "NDCG",
+    "MRR"
+  ],
+  "topk": [
+    10,
+    20,
+    50
+  ],
+  "test_result": {
+    "hit@10": 0.2132,
+    "hit@20": 0.2655,
+    "hit@50": 0.3623,
+    "ndcg@10": 0.1635,
+    "ndcg@20": 0.1766,
+    "ndcg@50": 0.1958,
+    "mrr@10": 0.1484,
+    "mrr@20": 0.152,
+    "mrr@50": 0.155
+  },
+  "best_validation_score": 0.1879,
+  "best_validation_result": {
+    "hit@10": 0.2444,
+    "hit@20": 0.3011,
+    "hit@50": 0.4034,
+    "ndcg@10": 0.1879,
+    "ndcg@20": 0.2021,
+    "ndcg@50": 0.2223,
+    "mrr@10": 0.1707,
+    "mrr@20": 0.1745,
+    "mrr@50": 0.1778
+  }
+}

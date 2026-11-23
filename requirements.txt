@@ -1,0 +1,13 @@
+numpy==1.26.4
+pandas==2.2.3
+PyYAML==6.0.2
+datasets==3.2.0
+huggingface-hub>=0.25.0
+recbole==1.2.0
+kmeans-pytorch==0.3
+einops==0.8.0
+packaging>=24.0
+ninja>=1.11
+setuptools==68.2.2
+wheel>=0.43
+transformers>=4.40

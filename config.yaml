@@ -1,0 +1,102 @@
+paths:
+  data_dir: dataset
+
+recbole:
+  seed: 2024
+  reproducibility: true
+  USER_ID_FIELD: user_id
+  ITEM_ID_FIELD: item_id
+  TIME_FIELD: timestamp
+  load_col:
+    inter:
+      - user_id
+      - item_id
+      - timestamp
+  user_inter_num_interval: "[5,inf)"
+  item_inter_num_interval: "[5,inf)"
+  train_neg_sample_args: null
+  eval_args:
+    split:
+      LS: valid_and_test
+    group_by: user
+    order: TO
+    mode: full
+  metrics:
+    - Hit
+    - NDCG
+    - MRR
+  topk:
+    - 10
+    - 20
+    - 50
+  valid_metric: NDCG@10
+  show_progress: true
+  worker: 4
+
+
+model:
+  hidden_size: 64
+  num_layers: 2
+  dropout_prob: 0.2
+  time_drop_out: 0.2
+  loss_type: CE
+  d_state: 32
+  d_conv: 4
+  expand: 2
+  head_dim: 32
+  chunk_size: 32
+  norm_eps: 1.0e-12
+  is_ffn: true
+  is_time: true
+  p2p_residual: false
+  is_kai_ming_init: true
+
+
+training:
+  epochs: 40
+  train_batch_size: 2048
+  eval_batch_size: 512
+  learner: adam
+  learning_rate: 0.001
+  weight_decay: 0.0
+  eval_step: 1
+  stopping_step: 7
+  enable_amp: true
+  enable_scaler: true
+
+
+datasets:
+  movielens:
+    name: MovieLens-1M
+    source_type: hf_dataset
+    hf_path: wwbrannon/ml-interview-examples-movielens-1m
+    recbole_name: ml-1m
+    max_seq_length: 200
+    model:
+      dropout_prob: 0.2
+      time_drop_out: 0.2
+      norm_eps: 1.0e-12
+      p2p_residual: false
+      is_kai_ming_init: true
+    columns:
+      user: user_id
+      item: item_id
+      rating: rating
+      timestamp: timestamp
+  steam:
+    name: Steam
+    source_type: steam_reviews
+    hf_path: recommender-system/steam-review-and-bundle-dataset
+    filename: steam_reviews.json.gz
+    recbole_name: steam
+    max_seq_length: 50
+    model:
+      dropout_prob: 0.2
+      time_drop_out: 0.2
+      norm_eps: 1.0e-12
+      p2p_residual: false
+      is_kai_ming_init: true
+    columns:
+      user: username
+      item: product_id
+      timestamp: date
